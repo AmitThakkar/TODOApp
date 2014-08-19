@@ -1,0 +1,5 @@
+#todoApp ul {list-style-type: none; width: 210px; height: 210px;  padding: 0px;}
+#todoApp ul li {background: #ccc; text-align: center; margin: 5px; width: 320px; height: 60px; float: left; display: table; box-sizing: border-box;}
+#todoApp ul li span {display: table-cell; vertical-align: middle;}
+#todoApp ul li input {display: table-cell; vertical-align: middle;}
+#todoApp ul li img{width: 20px;}
