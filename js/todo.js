@@ -28,7 +28,6 @@
             restrict: "A",
             templateUrl: "./partials/editableTemplate.html",
             link: function (scope, element) {
-                console.log("2222")
                 var oldValue = scope.value;
                 var changeEditStat = function (stat) {
                     scope.$apply(function () {
