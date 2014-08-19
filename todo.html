@@ -9,6 +9,9 @@
 Add New Task:
 <input type="text" ng-model="todo.storage.todoObject.newTask" />
 <input type="button" value="Add" ng-click="todo.addTask()" />
+<hr />
+<input type="button" value="Redo" ng-click="todo.redo()" >
+<input type="button" value="Undo" ng-click="todo.undo()" >
 <ul ng-if="todo.storage.todoObject.tasks.length">
     <li>
         <span>Important</span>
@@ -25,6 +28,8 @@ Add New Task:
 <script type="application/javascript" src="js/angular.min.js"></script>
 <!-- Require our ngStorageJS -->
 <script type="application/javascript" src="js/ngStorage.min.js"></script>
+<!-- Require our historyJS -->
+<script type="application/javascript" src="js/history.js"></script>
 <!-- Require our custom interceptorJS -->
 <script type="application/javascript" src="js/todo.js"></script>
 </body>

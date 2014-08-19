@@ -3,15 +3,22 @@
  */
 
 (function () {
-    var todoModule = angular.module("todoDemo", ['ngStorage']);
-    todoModule.controller("TODOController", ['$localStorage', function ($localStorage) {
+    var todoModule = angular.module("todoDemo", ['ngStorage', 'decipher.history']);
+    todoModule.controller("TODOController", ['$localStorage', 'History', '$scope', function ($localStorage, History, $scope) {
         this.storage = $localStorage;
-        if(!this.storage.todoObject) {
+        if (!this.storage.todoObject) {
             this.storage.todoObject = {
                 newTask: "",
                 tasks: []
             };
         }
+        History.watch('todo.storage', $scope, 'Testings');
+        this.undo = function () {
+            History.undo('todo.storage', $scope);
+        };
+        this.redo = function () {
+            History.redo('todo.storage', $scope);
+        };
         this.addTask = function () {
             this.storage.todoObject.tasks.push({value: this.storage.todoObject.newTask, isImportant: false});
             this.storage.todoObject.newTask = "";
