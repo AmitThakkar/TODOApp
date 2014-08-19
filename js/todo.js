@@ -3,21 +3,24 @@
  */
 
 (function () {
-    var todoModule = angular.module("todoDemo", []);
-    todoModule.controller("TODOController", [function () {
-        this.todoObject = {
-            newTask: "",
-            tasks: []
-        };
+    var todoModule = angular.module("todoDemo", ['ngStorage']);
+    todoModule.controller("TODOController", ['$localStorage', function ($localStorage) {
+        this.storage = $localStorage;
+        if(!this.storage.todoObject) {
+            this.storage.todoObject = {
+                newTask: "",
+                tasks: []
+            };
+        }
         this.addTask = function () {
-            this.todoObject.tasks.push({value: this.todoObject.newTask, isImportant: false});
-            this.todoObject.newTask = "";
+            this.storage.todoObject.tasks.push({value: this.storage.todoObject.newTask, isImportant: false});
+            this.storage.todoObject.newTask = "";
         };
         this.toggleStartStage = function (index) {
-            this.todoObject.tasks[index].isImportant = !this.todoObject.tasks[index].isImportant;
+            this.storage.todoObject.tasks[index].isImportant = !this.storage.todoObject.tasks[index].isImportant;
         };
         this.removeTask = function (index) {
-            this.todoObject.tasks.splice(index, 1);
+            this.storage.todoObject.tasks.splice(index, 1);
         };
     }]);
     todoModule.directive("editable", function () {

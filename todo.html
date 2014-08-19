@@ -7,15 +7,15 @@
 <body ng-controller="TODOController as todo" id="todoApp">
 <h1>My TODO App</h1>
 Add New Task:
-<input type="text" ng-model="todo.todoObject.newTask" />
+<input type="text" ng-model="todo.storage.todoObject.newTask" />
 <input type="button" value="Add" ng-click="todo.addTask()" />
-<ul ng-if="todo.todoObject.tasks.length">
+<ul ng-if="todo.storage.todoObject.tasks.length">
     <li>
         <span>Important</span>
         <span>Task</span>
         <span>Done</span>
     </li>
-    <li ng-repeat="task in todo.todoObject.tasks track by $index">
+    <li ng-repeat="task in todo.storage.todoObject.tasks track by $index">
         <img ng-src="./images/{{ task.isImportant ? 'important' : 'notImportant'}}.png" ng-click="todo.toggleStartStage($index)" />
         <span editable="task.value"></span>
         <input type="button" ng-click="todo.removeTask($index)" value="Remove" />
@@ -23,6 +23,8 @@ Add New Task:
 </ul>
 <!-- Require AngularJS -->
 <script type="application/javascript" src="js/angular.min.js"></script>
+<!-- Require our ngStorageJS -->
+<script type="application/javascript" src="js/ngStorage.min.js"></script>
 <!-- Require our custom interceptorJS -->
 <script type="application/javascript" src="js/todo.js"></script>
 </body>
