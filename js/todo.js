@@ -36,7 +36,7 @@
                 value: "=editable"
             },
             restrict: "A",
-            templateUrl: "./partials/editableTemplate.html",
+            template: '<span ng-hide="edit" ng-bind="value"></span><input ng-show="edit" ng-model="value">',
             link: function (scope, element) {
                 var oldValue = scope.value;
                 var changeEditStat = function (stat) {
