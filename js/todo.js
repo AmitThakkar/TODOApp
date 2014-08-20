@@ -20,8 +20,12 @@
             History.redo('todo.storage', $scope);
         };
         this.addTask = function () {
-            this.storage.todoObject.tasks.push({value: this.storage.todoObject.newTask, isImportant: false});
-            this.storage.todoObject.newTask = "";
+            if(this.storage.todoObject.newTask.trim() !== "") {
+                this.storage.todoObject.tasks.push({value: this.storage.todoObject.newTask.trim(), isImportant: false});
+                this.storage.todoObject.newTask = "";
+            } else {
+                alert("Please write some task in text field.");
+            }
         };
         this.toggleStartStage = function (index) {
             this.storage.todoObject.tasks[index].isImportant = !this.storage.todoObject.tasks[index].isImportant;

@@ -1015,7 +1015,6 @@
           throw 'could not find history for scope ' + id;
         }
 
-          console.log(scopeHistory, exp, scopeHistory[exp])
         stack = scopeHistory[exp];
         if (isUndefined(stack)) {
           throw 'could not find history in scope "' + id +
